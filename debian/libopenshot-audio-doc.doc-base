@@ -1,0 +1,8 @@
+Document: libopenshot-audio-doc
+Title: OpenShot audio API documentation
+Author: OpenShot Studios, LLC
+Section: Programming/C++
+
+Format: HTML
+Index: /usr/share/doc/libopenshot-audio-doc/html/index.html
+Files: /usr/share/doc/libopenshot-audio-doc/html/*.html

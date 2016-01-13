@@ -1,0 +1,5 @@
+libopenshot-audio (0.0.6-1) UNRELEASED; urgency=low
+
+  * Initial release. Closes: #810787
+
+ -- Ghislain Antony Vaillant <ghisvail@gmail.com>  Tue, 12 Jan 2016 17:45:04 +0000
