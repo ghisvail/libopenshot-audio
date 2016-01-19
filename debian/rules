@@ -3,11 +3,29 @@
 # Uncomment this to turn on verbose mode.
 #DH_VERBOSE = 1
 
+# Additional flags to make the embedded copy of JUCE use system libraries.
+FLAC_CFLAGS = -DJUCE_INCLUDE_FLAC_CODE=0 $(shell pkg-config --cflags flac)
+FLAC_LDFLAGS = $(shell pkg-config --libs flac)
+LIBJPEG_CFLAGS = -DJUCE_INCLUDE_JPEGLIB_CODE=0 $(shell pkg-config --cflags libjpeg)
+LIBJPEG_LDFLAGS = $(shell pkg-config --libs libjpeg)
+LIBPNG_CFLAGS = -DJUCE_INCLUDE_PNGLIB_CODE=0 -DPNG_SKIP_SETJMP_CHECK $(shell pkg-config --cflags libpng)
+LIBPNG_LDFLAGS = $(shell pkg-config --libs libpng)
+VORBIS_CFLAGS = -DJUCE_INCLUDE_OGGVORBIS_CODE=0 $(shell pkg-config --cflags vorbis)
+VORBIS_LDFLAGS = $(shell pkg-config --libs vorbis)
+ZLIB_CFLAGS = -DJUCE_INCLUDE_ZLIB_CODE=0 $(shell pkg-config --cflags zlib)
+ZLIB_LDFLAGS = $(shell pkg-config --libs zlib)
+
 # Hardening flags.
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
-export DEB_CFLAGS_MAINT_APPEND = -pthread -Wall -pedantic
-export DEB_CXXFLAGS_MAINT_APPEND = -pthread -Wall -pedantic
-export DEB_LDFLAGS_MAINT_APPEND = -lpthread -ldl -Wl,--as-needed
+export DEB_CFLAGS_MAINT_APPEND = $(FLAC_CFLAGS) $(LIBJPEG_CFLAGS) \
+	$(LIBPNG_CFLAGS) $(VORBIS_CFLAGS) $(ZLIB_CFLAGS) \
+	-pthread -Wall -pedantic
+export DEB_CXXFLAGS_MAINT_APPEND = $(FLAC_CFLAGS) $(LIBJPEG_CFLAGS) \
+	$(LIBPNG_CFLAGS) $(VORBIS_CFLAGS) $(ZLIB_CFLAGS) \
+	-pthread -Wall -pedantic
+export DEB_LDFLAGS_MAINT_APPEND = $(FLAC_LDFLAGS) $(LIBJPEG_LDFLAGS) \
+	$(LIBPNG_LDFLAGS) $(VORBIS_LDFLAGS) $(ZLIB_LDFLAGS) \
+	-lpthread -ldl -Wl,--as-needed
 
 # Environment information.
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)

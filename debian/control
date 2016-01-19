@@ -6,10 +6,16 @@ Priority: optional
 Build-Depends: cmake,
                debhelper (>= 9),
                libasound2-dev,
+               libflac-dev,
                libfreetype6-dev,
+               libjpeg-dev,
+               libpng-dev,
+               libvorbis-dev,
                libxcursor-dev,
                libxinerama-dev,
-               libxrandr-dev
+               libxrandr-dev,
+               pkg-config,
+               zlib1g-dev
 Build-Depends-Indep: doxygen
 Standards-Version: 3.9.6
 Homepage: http://www.openshot.org/
