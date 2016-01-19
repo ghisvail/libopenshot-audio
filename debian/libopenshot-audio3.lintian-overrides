@@ -1,4 +1,0 @@
-# This override is present for the upstream OpenShot PPA, where the packaging
-# is using the embedded JUCE code with vendored copies of flac, oggvorbis,
-# libjpeg and libpng.
-embedded-library usr/lib/x86_64-linux-gnu/libopenshot-audio.so.0.0.6: *

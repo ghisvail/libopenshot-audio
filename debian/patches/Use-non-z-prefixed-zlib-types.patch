@@ -1,0 +1,48 @@
+From: Ghislain Antony Vaillant <ghisvail@gmail.com>
+Date: Tue, 19 Jan 2016 16:31:57 +0000
+Subject: Use non z-prefixed zlib types.
+
+---
+ .../modules/juce_core/zip/juce_GZIPCompressorOutputStream.cpp       | 4 ++--
+ .../modules/juce_core/zip/juce_GZIPDecompressorInputStream.cpp      | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/JuceLibraryCode/modules/juce_core/zip/juce_GZIPCompressorOutputStream.cpp b/JuceLibraryCode/modules/juce_core/zip/juce_GZIPCompressorOutputStream.cpp
+index f1db2b4..ee4afcf 100644
+--- a/JuceLibraryCode/modules/juce_core/zip/juce_GZIPCompressorOutputStream.cpp
++++ b/JuceLibraryCode/modules/juce_core/zip/juce_GZIPCompressorOutputStream.cpp
+@@ -87,8 +87,8 @@ private:
+         {
+             stream.next_in   = const_cast <uint8*> (data);
+             stream.next_out  = buffer;
+-            stream.avail_in  = (z_uInt) dataSize;
+-            stream.avail_out = (z_uInt) sizeof (buffer);
++            stream.avail_in  = (uInt) dataSize;
++            stream.avail_out = (uInt) sizeof (buffer);
+ 
+             const int result = isFirstDeflate ? deflateParams (&stream, compLevel, strategy)
+                                               : deflate (&stream, flushMode);
+diff --git a/JuceLibraryCode/modules/juce_core/zip/juce_GZIPDecompressorInputStream.cpp b/JuceLibraryCode/modules/juce_core/zip/juce_GZIPDecompressorInputStream.cpp
+index 88d49a3..b929580 100644
+--- a/JuceLibraryCode/modules/juce_core/zip/juce_GZIPDecompressorInputStream.cpp
++++ b/JuceLibraryCode/modules/juce_core/zip/juce_GZIPDecompressorInputStream.cpp
+@@ -126,8 +126,8 @@ public:
+         {
+             stream.next_in  = data;
+             stream.next_out = dest;
+-            stream.avail_in  = (z_uInt) dataSize;
+-            stream.avail_out = (z_uInt) destSize;
++            stream.avail_in  = (uInt) dataSize;
++            stream.avail_out = (uInt) destSize;
+ 
+             switch (inflate (&stream, Z_PARTIAL_FLUSH))
+             {
+@@ -136,7 +136,7 @@ public:
+                 // deliberate fall-through
+             case Z_OK:
+                 data += dataSize - stream.avail_in;
+-                dataSize = (z_uInt) stream.avail_in;
++                dataSize = (uInt) stream.avail_in;
+                 return (int) (destSize - stream.avail_out);
+ 
+             case Z_NEED_DICT:
