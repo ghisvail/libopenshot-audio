@@ -1,3 +1,5 @@
 version=3
-opts=filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/libopenshot-audio-$1\.tar\.gz/ \
+opts=dversionmangle=s/\+(debian|dfsg|ds|deb)(\.\d+)?$//,\
+repacksuffix=+ds1,\
+filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/libopenshot-audio-$1\.tar\.gz/ \
 https://github.com/OpenShot/libopenshot-audio/tags .*/v?(\d\S*)\.tar\.gz
