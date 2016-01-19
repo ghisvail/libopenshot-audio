@@ -1,4 +1,4 @@
-libopenshot-audio (0.0.6-1) UNRELEASED; urgency=low
+libopenshot-audio (0.0.6+ds1-1) UNRELEASED; urgency=low
 
   * Initial release. Closes: #810787
 
