@@ -24,7 +24,7 @@ Files: JuceLibraryCode/*
 Copyright: 2015 ROLI Ltd.
 License: GPL-2+ or AGPL-3
 
-Files: JuceLibraryCode/juce_core/*
+Files: JuceLibraryCode/modules/juce_core/*
 Copyright: 2015 ROLI Ltd.
 License: ISC
 
