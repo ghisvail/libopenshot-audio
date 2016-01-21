@@ -18,6 +18,8 @@ Build-Depends: cmake,
                zlib1g-dev
 Build-Depends-Indep: doxygen
 Standards-Version: 3.9.6
+Vcs-Browser: http://anonscm.debian.org/cgit/pkg-multimedia/libopenshot-audio.git/
+Vcs-Git: git://anonscm.debian.org/pkg-multimedia/libopenshot-audio.git
 Homepage: http://www.openshot.org/
 
 Package: libopenshot-audio3
