@@ -1,5 +1,5 @@
-libopenshot-audio (0.0.6+ds1-1) UNRELEASED; urgency=low
+libopenshot-audio (0.0.6+ds1-1) unstable; urgency=low
 
   * Initial release. Closes: #810787
 
- -- Ghislain Antony Vaillant <ghisvail@gmail.com>  Tue, 12 Jan 2016 17:45:04 +0000
+ -- Ghislain Antony Vaillant <ghisvail@gmail.com>  Thu, 21 Jan 2016 11:22:05 +0000
